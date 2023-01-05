@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Form = ({setStudentData , studentData}) => {
+	const [countId , setCountId ]= useState(1);
    
     const handleRegister = (event) => {
         event.preventDefault();
@@ -10,12 +11,14 @@ const Form = ({setStudentData , studentData}) => {
         const today = new Date();
         const time = today.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
        const studentEntry ={
+		id:countId,
         studentName: studentName,
         rollNumber: rollNumber,
         checkInTime: time,
-        checkOutTime: time,
+        checkOutTime: "no value",
        }
     setStudentData([...studentData , studentEntry])
+	setCountId((countId) => countId + 1);
     };
 
 	return (

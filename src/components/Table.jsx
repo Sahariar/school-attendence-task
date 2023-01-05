@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({studentData}) => {
+const Table = ({studentData , handleCheckOut}) => {
     console.log(studentData);
 
 	return (
@@ -19,12 +19,12 @@ const Table = ({studentData}) => {
 					<tbody>
                         {
                             studentData.length > 0 ? 
-                      studentData.map((student,index) => <tr key={student.rollNumber} className="hover" >
-							<th>{index + 1}</th>
+                      studentData.map((student) => <tr key={student.id} className="hover" >
+							<th>{student.id}</th>
 							<td>{student.studentName}</td>
 							<td>{student.rollNumber}</td>
 							<td>{student.checkInTime}</td>
-							<td>{student.checkOutTime }</td>
+							<td>{student?.checkOutTime !=="no value" ? student?.checkOutTime : <button className="btn btn-neutral" onClick={()=>{handleCheckOut(student.id)}}>Checkout Log</button> }</td>
 						</tr>) : (
                             <tr>
 							<th>1</th>
