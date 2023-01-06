@@ -1,8 +1,6 @@
 import React from "react";
 
-const Table = ({studentData , handleCheckOut}) => {
-    console.log(studentData);
-
+const Table = ({ studentData, handleCheckOut }) => {
 	return (
 		<>
 			<div className="overflow-x-auto">
@@ -17,26 +15,38 @@ const Table = ({studentData , handleCheckOut}) => {
 						</tr>
 					</thead>
 					<tbody>
-                        {
-                            studentData.length > 0 ? 
-                      studentData.map((student) => <tr key={student.id} className="hover" >
-							<th>{student.id}</th>
-							<td>{student.studentName}</td>
-							<td>{student.rollNumber}</td>
-							<td>{student.checkInTime}</td>
-							<td>{student?.checkOutTime !=="no value" ? student?.checkOutTime : <button className="btn btn-neutral" onClick={()=>{handleCheckOut(student.id)}}>Checkout Log</button> }</td>
-						</tr>) : (
-                            <tr>
-							<th>1</th>
-							<td>No Data</td>
-							<td>No Data</td>
-							<td>No Data</td>
-							<td>No Data</td>
-						</tr>
-                        )
-                        }
-            
-						
+						{studentData.length > 0 ? (
+							studentData.map((student) => (
+								<tr key={student.id} className="hover">
+									<th>{student.id}</th>
+									<td>{student.studentName}</td>
+									<td>{student.rollNumber}</td>
+									<td>{student.checkInTime}</td>
+									<td>
+										{student?.checkOutTime !== "no value" ? (
+											student?.checkOutTime
+										) : (
+											<button
+												className="btn btn-neutral"
+												onClick={() => {
+													handleCheckOut(student.id);
+												}}
+											>
+												Checkout Log
+											</button>
+										)}
+									</td>
+								</tr>
+							))
+						) : (
+							<tr>
+								<th>1</th>
+								<td>No Data</td>
+								<td>No Data</td>
+								<td>No Data</td>
+								<td>No Data</td>
+							</tr>
+						)}
 					</tbody>
 				</table>
 			</div>
