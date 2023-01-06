@@ -10,14 +10,12 @@ function App() {
 		today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 	// button function for Checkout time.need to implement.
 	const handleCheckOut = (id) => {
-		console.log(id);
 		const today = new Date();
 		const time = today.toLocaleString("en-US", {
 			hour: "numeric",
 			minute: "numeric",
 			hour12: true,
 		});
-		console.log(studentData[id]);
 		// setStudentData()
 
 		setStudentData((current) =>
